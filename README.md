@@ -1,5 +1,6 @@
 # forpeople
-a simple app: create user, login, publish a post 
+a simple app: create user, login, publish a post
+
 Preview: http://forpeople.herokuapp.com/
 
 ### connect to mongodb
