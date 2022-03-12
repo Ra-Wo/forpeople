@@ -1,0 +1,67 @@
+<%- include('Globle/header.ejs') %>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">ForPeople</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/LogIn">Log In</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+ 
+ 
+ <% if (resultx != undefined) { %>
+ <div class="alert alert-danger" role="alert">
+  <%= resultx %>
+</div>
+<% } %>
+
+
+ 
+ <form class="container align-items-center mt-4" action="/SignUp" method="post" accept-charset="utf-8">
+<div class="card">
+         
+     <div class="card-header">Sign Up</div>
+     <div class="card-body">
+     <div class="p-2 row">
+         <div class="col">
+             <input autofocus required name="First_Name" type="text" class="form-control" placeholder="First name" aria-label="First name">
+         </div>
+         <div class="col">
+             <input required name="Last_Name" type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+         </div>
+     </div>
+     <div class="p-2 col">
+         <input required name="Email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+     </div>
+     <div class="p-2 col">
+         <input required name="Password" type="password" class="form-control" placeholder="Password" id="inputPassword4">
+     </div>
+     <div class="p-2">
+         <p style="font-size: 12px">By signing up, you are indicating that you have read and agree to the Terms of Use and Privacy Policy.</p>
+     </div>
+     <div class="p-2 col">
+         <button style="margin-top: -14px" type="submit" class="btn btn-primary">Submit</button>
+     </div>
+     </div>
+</div>
+ </form>
+    
+    
+    
+    
+<%- include('Globle/footer.ejs') %>

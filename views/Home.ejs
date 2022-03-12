@@ -1,0 +1,76 @@
+<%- include('Globle/header.ejs') %>
+<%- include('Globle/headerUser.ejs') %>
+
+
+    <div class='container mt-1'>
+        
+        <div class='card'>
+            
+            <div style="font-weight: 600" class='card-body'>
+                
+                <% 
+                var xdatex = new Date();
+                
+                if ( xdatex.getHours() < 12 && xdatex.getHours() >= 4) {
+                    
+                    var Greating = '🌅 Good Morning';
+                    
+                } else if (xdatex.getHours() >= 12 && xdatex.getHours() <= 17) {
+                    
+                    var Greating = '🌇 Good afternoon';
+                    
+                } else {
+                    var Greating = '🌆 Good Evening ';
+                } %>
+                
+                
+                
+                <div class='row'>
+                    
+                    <div style="display: flex;" class='col'>
+                        <%= Greating %><% if (firstName != 'NoUser') { %><p style="padding:0; margin:0">, <%= firstName %></p> <% } %>
+                    </div>
+                    
+<% if (firstName == 'NoUser') { %>
+    
+                    <div class='col'>
+                        <a class='btn btn-primary px-2 py-0' style="text-decoration: none; float: right; font-size: 14px" href='/LogIn'>
+                            Log In
+                        </a>
+                    </div>
+<% } %>
+
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+<% for (Post of Posts.reverse()){ %>
+    <div class="container py-2">
+        <div class="card">
+            <div class="card-header cardheader">
+                <div style="background: url('/<%= Post.Photo_Profile %>'); background-size: cover;" class="post-photo-profile"></div>
+                <div class="px-2 Namepostauthor">
+                    <a style="text-decoration:none" href='/Profile/PI-<%= Post.USERID %>'>
+                        <%= Post.FullName %>
+                    </a>
+                    <p style="padding:0; margin:0; margin-top:-6px; font-size: 12px; color: gray"><%= Post.date %></p>
+                </div>
+            </div>
+            <div class="card-body">
+
+
+                <div class="text-post">
+                    <%= Post.TextPost %>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+<% } %>
+
+<%- include('Globle/footer.ejs') %>

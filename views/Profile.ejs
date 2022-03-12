@@ -1,0 +1,134 @@
+<%- include('Globle/header.ejs') %>
+<%- include('Globle/headerUser.ejs') %>
+
+<style>
+    
+.Profile-photo {
+    background: url('/<%= Photo_Profile %>') no-repeat;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin-top: -70px;
+    border: 2px solid white;
+    background-size: cover;
+}
+
+.cardimgtop {
+    width: 100%;
+    height: 150px;
+    background: url('/cover.jpg') white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.profile-info {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center
+}
+
+.edit {
+    text-align: right;
+    margin-top: -5px;
+}
+.Add-post {
+    display: inline-block;
+    position: relative;
+}
+
+.button-post {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.textarea-post {
+    display: block;
+}
+.FullName {
+    font-size: 21px;
+    font-weight: 600
+}
+.post-photo-profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 2px solid white;
+    background: url('/<%= Photo_Profile %>') no-repeat;
+    background-size: cover;
+}
+.cardheader {
+    display: flex;
+    align-items: center;
+}
+.Namepostauthor {
+    font-weight: 800;
+    font-size: 14px !important
+}
+</style>
+    
+    <div style="border-radius:0; border:0!important" class="card container">
+        <div class="card-img-top cardimgtop"></div>
+        <div class="card-body">
+            
+            <div class="profile-info">
+                <div class="col">
+                    <div class="Profile-photo"></div>
+                </div>
+                <div class="col">
+                    <p class="FullName"><%= `${First_Name} ${Last_Name}` %></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+<% if (YNProfile == 'Profile') { %>
+    <div class="card mt-2 container">
+        <div class="py-3 Add-post">
+            <form action='/profile' method="POST">
+                <div class="form-floating">
+                    <textarea name="Post" class="form-control textarea-post" placeholder="Add Post" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Add Post</label>
+                    <button class="button-post btn btn-primary py-1" type="submit"><i class="ri-send-plane-2-fill"></i></button>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+<% } %>
+    
+    
+<% for ( Post of Posts.reverse() ){ %>
+
+    <div class="container py-2">
+        <div class="card">
+            <div class="card-header cardheader">
+                <div class="post-photo-profile"></div>
+                <div class="row px-3">
+                    <div class="px-1 Namepostauthor">
+                        <a style="text-decoration:none;" href='/Profile/PI-<%= Post.USERID %>'><%= `${First_Name} ${Last_Name}` %></a>
+                    </div>
+                    <div style="font-size:13px; color: gray; margin-top: -5px">
+                        <%= Post.date %>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                
+                
+                <div class="text-post">
+                      <%= Post.TextPost %>
+                </div>  
+                
+                
+            </div>
+        </div>
+    </div>
+    
+<% } %>
+    
+<%- include('Globle/footer.ejs') %>
